@@ -1,6 +1,7 @@
 package oncall.view;
 
 import java.util.List;
+import oncall.domain.Employee;
 import oncall.dto.CustomDateLine;
 import oncall.util.Message;
 
@@ -28,5 +29,15 @@ public class OutputView {
 
     public void printCustomDateLines(List<CustomDateLine> customDateLines) {
         customDateLines.stream().map(CustomDateLine::toString).forEach(this::printLine);
+    }
+
+    public void printWorkers(List<Employee> workers) {
+        workers.stream().map(Employee::toString).forEach(this::printLine);
+    }
+
+    public void printOncall(List<CustomDateLine> customDateLines, List<Employee> workers) {
+        while (!customDateLines.isEmpty() || !workers.isEmpty()) {
+            System.out.println(customDateLines.remove(0) + " " + workers.remove(0).toString());
+        }
     }
 }

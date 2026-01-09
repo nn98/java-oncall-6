@@ -23,11 +23,11 @@ public class CustomDate {
 
     public List<CustomDateLine> getEveryDay() {
         List<CustomDateLine> everyDay = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.of(2024, month);
+        YearMonth yearMonth = YearMonth.of(2023, month);
         int daysInMonth = yearMonth.lengthOfMonth();
         for (int passed = 0; passed < daysInMonth; passed += 1) {
             int day = passed + 1;
-            boolean isHoliday = Holidays.isHoliday(month, day);
+            boolean isHoliday = PublicHolidays.isPublicHoliday(month, day);
             everyDay.add(new CustomDateLine(month, day, getDayOfWeek(passed), isHoliday));
         }
         return everyDay;

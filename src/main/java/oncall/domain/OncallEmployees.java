@@ -1,5 +1,7 @@
 package oncall.domain;
 
+import java.util.List;
+
 public class OncallEmployees {
 
     private Employees weekdayEmployees;
@@ -19,8 +21,16 @@ public class OncallEmployees {
                 "\nweekendEmployees=" + weekendEmployees;
     }
 
+    public List<Employee> getWeekdayEmployees() {
+        return weekdayEmployees.employees();
+    }
+
     public void setWeekdayEmployees(Employees employees) {
         this.weekdayEmployees = employees;
+    }
+
+    public List<Employee> getWeekendEmployees() {
+        return weekendEmployees.employees();
     }
 
     public void setWeekendEmployees(Employees employees) {

@@ -4,11 +4,13 @@ import java.time.Month;
 import java.util.List;
 import oncall.domain.CustomDate;
 import oncall.domain.CustomDayOfWeek;
+import oncall.domain.Employee;
 import oncall.domain.Employees;
 import oncall.domain.OncallEmployees;
 import oncall.dto.CustomDateLine;
 import oncall.util.MissionError;
 import oncall.util.OncallParser;
+import oncall.util.WorkerScheduler;
 
 public class Service {
 
@@ -49,15 +51,16 @@ public class Service {
         oncallEmployees.setWeekendEmployees(employees);
     }
 
-    public void printBeginDateInfo() {
-        System.out.println(beginDateInfo);
-    }
-
-    public void printOncallEmployees() {
-        System.out.println(oncallEmployees);
-    }
-
     public List<CustomDateLine> getCustomDateLines() {
         return beginDateInfo.getEveryDay();
+    }
+
+    public List<Employee> scheduling() {
+        List<CustomDateLine> workingDay = beginDateInfo.getEveryDay();
+        List<Employee> weekdayEmployees = oncallEmployees.getWeekdayEmployees();
+        List<Employee> weekendEmployees = oncallEmployees.getWeekendEmployees();
+        WorkerScheduler workerScheduler =
+                new WorkerScheduler(workingDay, weekdayEmployees, weekendEmployees);
+        return workerScheduler.getWorkers();
     }
 }

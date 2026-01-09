@@ -28,7 +28,7 @@ public enum PublicHolidays {
                 .orElse(null);
     }
 
-    public static boolean isHoliday(int month, int day) {
+    public static boolean isPublicHoliday(int month, int day) {
         return Arrays.stream(values())
                 .anyMatch(publicHolidays -> publicHolidays.month == month && publicHolidays.day == day);
     }

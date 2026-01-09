@@ -32,13 +32,11 @@ public class Controller {
         outputView.printInputNoticeBeginInfo();
         String beginInfo = inputHandler.inputBeginInfo();
         service.setBeginDateInfo(beginInfo);
-        service.printBeginDateInfo();
     }
 
     private void initOncallEmployees() {
         initWeekdayEmployees();
         initWeekendEmployees();
-        service.printOncallEmployees();
     }
 
     private void initWeekdayEmployees() {
@@ -55,6 +53,6 @@ public class Controller {
     }
 
     public void execute() {
-        outputView.printCustomDateLines(service.getCustomDateLines());
+        outputView.printOncall(service.getCustomDateLines(), service.scheduling());
     }
 }
