@@ -1,9 +1,7 @@
 package oncall;
 
-import java.time.LocalDate;
 import oncall.controller.Controller;
 import oncall.controller.InputHandler;
-import oncall.domain.SchoolDays;
 import oncall.service.Service;
 import oncall.util.OncallParser;
 import oncall.view.InputView;
@@ -11,15 +9,11 @@ import oncall.view.OutputView;
 
 public class Config {
 
-    private static final String CSV_PATH = "src/main/resources/oncalls.csv";
-
     private InputView inputView;
     private OutputView outputView;
     private Controller controller;
     private Service service;
-    private LocalDate today;
     private InputHandler inputHandler;
-    private SchoolDays schoolDays;
     private OncallParser parser;
 
     public Controller controller() {
