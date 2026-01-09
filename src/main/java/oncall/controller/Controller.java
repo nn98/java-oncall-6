@@ -19,6 +19,13 @@ public class Controller {
         while (true) {
             try {
                 initBeginInfo();
+                break;
+            } catch (IllegalArgumentException exception) {
+                outputView.printException(exception.getMessage());
+            }
+        }
+        while (true) {
+            try {
                 initOncallEmployees();
                 break;
             } catch (IllegalArgumentException exception) {

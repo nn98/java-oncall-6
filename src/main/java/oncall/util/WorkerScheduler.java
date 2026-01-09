@@ -71,7 +71,7 @@ public class WorkerScheduler {
         boolean isScheduled = checkChangedWeekdayWorker(changedWeekdayWorker);
         if (isScheduled) {
             changedWeekdayWorker = null;
-            nextWeekendCounter();
+            nextWeekdayCounter();
             return isScheduled;
         }
         isScheduled = scheduleWeekdayIfNotDuplicated();

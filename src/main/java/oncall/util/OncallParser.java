@@ -27,7 +27,7 @@ public class OncallParser {
             List<Employee> employees = parseValidEmployees(input);
             return employees;
         } catch (Exception exception) {
-            throw MissionError.INVALID_INPUT.exception();
+            throw exception;
         }
     }
 
