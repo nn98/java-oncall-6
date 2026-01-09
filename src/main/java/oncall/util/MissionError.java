@@ -13,7 +13,7 @@ public enum MissionError {
     }
 
     private String fullMessage() {
-        return ERROR_PREFIX + message + RETRY_INPUT;
+        return ERROR_PREFIX.message + message + RETRY_INPUT.message;
     }
 
     public IllegalArgumentException exception() {

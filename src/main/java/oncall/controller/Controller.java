@@ -16,20 +16,45 @@ public class Controller {
     }
 
     public void run() {
-        String beginInfo = inputHandler.inputBeginInfo();
-        service.setBeginDateInfo(beginInfo);
-        service.printBeginDateInfo();
-
-        String weekdayEmployee = inputHandler.inputEmployee();
-        service.setWeekdayEmployee(weekdayEmployee);
-
-        String weekendEmployee = inputHandler.inputEmployee();
-        service.setWeekendEmployee(weekendEmployee);
-
+        while (true) {
+            try {
+                initBeginInfo();
+                initOncallEmployees();
+                break;
+            } catch (IllegalArgumentException exception) {
+                outputView.printException(exception.getMessage());
+            }
+        }
         execute();
     }
 
-    public void execute() {
+    private void initBeginInfo() {
+        outputView.printInputNoticeBeginInfo();
+        String beginInfo = inputHandler.inputBeginInfo();
+        service.setBeginDateInfo(beginInfo);
+        service.printBeginDateInfo();
+    }
 
+    private void initOncallEmployees() {
+        initWeekdayEmployees();
+        initWeekendEmployees();
+        service.printOncallEmployees();
+    }
+
+    private void initWeekdayEmployees() {
+        outputView.printInputNoticeWeekdayEmployees();
+        String weekdayEmployee = inputHandler.inputEmployee();
+        service.setWeekdayEmployees(weekdayEmployee);
+
+    }
+
+    private void initWeekendEmployees() {
+        outputView.printInputNoticeWeekendEmployees();
+        String weekendEmployee = inputHandler.inputEmployee();
+        service.setWeekendEmployees(weekendEmployee);
+    }
+
+    public void execute() {
+        outputView.printCustomDateLines(service.getCustomDateLines());
     }
 }

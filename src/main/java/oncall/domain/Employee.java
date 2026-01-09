@@ -7,4 +7,9 @@ public class Employee {
     public Employee(String nickname) {
         this.nickname = nickname;
     }
+
+    @Override
+    public String toString() {
+        return nickname;
+    }
 }
