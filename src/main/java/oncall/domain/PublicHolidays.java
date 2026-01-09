@@ -2,7 +2,7 @@ package oncall.domain;
 
 import java.util.Arrays;
 
-public enum Holidays {
+public enum PublicHolidays {
 
     신정(1, 1),
     삼일절(3, 1),
@@ -16,20 +16,20 @@ public enum Holidays {
     private final int month;
     private final int day;
 
-    Holidays(int month, int day) {
+    PublicHolidays(int month, int day) {
         this.month = month;
         this.day = day;
     }
 
-    public static Holidays findBy(int month, int day) {
+    public static PublicHolidays findBy(int month, int day) {
         return Arrays.stream(values())
-                .filter(holidays -> holidays.month == month && holidays.day == day)
+                .filter(publicHolidays -> publicHolidays.month == month && publicHolidays.day == day)
                 .findFirst()
                 .orElse(null);
     }
 
     public static boolean isHoliday(int month, int day) {
         return Arrays.stream(values())
-                .anyMatch(holidays -> holidays.month == month && holidays.day == day);
+                .anyMatch(publicHolidays -> publicHolidays.month == month && publicHolidays.day == day);
     }
 }
